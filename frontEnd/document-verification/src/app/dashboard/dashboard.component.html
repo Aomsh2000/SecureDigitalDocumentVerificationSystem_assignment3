@@ -1,14 +1,23 @@
-<!-- src/app/dashboard/dashboard.component.html -->
-<table *ngIf="!loading">
-    <tr *ngFor="let document of documents">
-      <td>{{ document.title }}</td>
-      <td>{{ document.filePath }}</td>
-      <td>{{ document.verificationCode }}</td>
-      <td>{{ document.status }}</td>
-      <td>{{ document.createdAt | date: 'short' }}</td>
-    </tr>
+<div class="dashboard-container">
+  <h2>Document Dashboard</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>File Path</th>
+        <th>Verification Code</th>
+        <th>Status</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let document of documents">
+        <td>{{ document.title }}</td>
+        <td>{{ document.filePath }}</td>
+        <td>{{ document.verificationCode }}</td>
+        <td>{{ document.status }}</td>
+        <td>{{ document.createdAt | date:'short' }}</td>
+      </tr>
+    </tbody>
   </table>
-  
-  <div *ngIf="loading">Loading...</div>
-  <div *ngIf="error">{{ error }}</div>
-  
+</div>

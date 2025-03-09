@@ -1,13 +1,9 @@
-import { RouterModule } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router'; // Import RouterModule for routing
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DocumentUploadComponent } from './document-upload/document-upload.component';
 import { VerificationComponent } from './verification/verification.component';
-import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { loadDocuments } from './store/document.actions';
-import { Observable } from 'rxjs';
-import { DocumentState } from './store/document.reducer';
-import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,22 +13,9 @@ import { CommonModule } from '@angular/common';
     DashboardComponent,
     DocumentUploadComponent,
     VerificationComponent,
-    RouterModule,
-    CommonModule  
+    RouterModule // Include RouterModule if you're using routing
   ]
 })
-export class AppComponent implements OnInit{
-  documents$: Observable<DocumentState>;
-  loading$: Observable<boolean>;
-  error$: Observable<string | null>;
-
-  constructor(private store: Store<{ document: DocumentState }>) {
-    this.documents$ = store.select('document');
-    this.loading$ = store.select(state => state.document.loading);
-    this.error$ = store.select(state => state.document.error);
-  }
-
-  ngOnInit(): void {
-    this.store.dispatch(loadDocuments()); // Dispatch action to load documents
-  }
+export class AppComponent {
+  // AppComponent logic here
 }
