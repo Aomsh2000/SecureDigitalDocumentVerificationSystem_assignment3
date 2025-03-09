@@ -1,0 +1,18 @@
+<div class="upload-container">
+    <h2>Upload Document</h2>
+    <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+      <label for="title">Document Title:</label>
+      <input id="title" formControlName="title" type="text" />
+  
+      <label for="file">Select File:</label>
+      <input id="file" type="file" (change)="onFileChange($event)" formControlName="file" />
+  
+      <button type="submit" [disabled]="uploadForm.invalid">Upload</button>
+    </form>
+  
+    <div *ngIf="uploadForm.invalid && uploadForm.touched">
+      <div *ngIf="uploadForm.get('title')?.invalid">Title is required.</div>
+      <div *ngIf="uploadForm.get('file')?.invalid">File is required.</div>
+    </div>
+  </div>
+  

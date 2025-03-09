@@ -1,0 +1,16 @@
+<div class="verification-container">
+    <h2>Verify Document</h2>
+    <form [formGroup]="verificationForm" (ngSubmit)="onVerify()">
+      <label for="verificationCode">Verification Code:</label>
+      <input id="verificationCode" formControlName="verificationCode" type="text" />
+  
+      <button type="submit" [disabled]="verificationForm.invalid">Verify</button>
+    </form>
+  
+    <div *ngIf="verificationForm.invalid && verificationForm.touched">
+      <div *ngIf="verificationForm.get('verificationCode')?.invalid">
+        Verification Code is required.
+      </div>
+    </div>
+  </div>
+  
